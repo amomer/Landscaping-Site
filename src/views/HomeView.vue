@@ -78,7 +78,7 @@ const submitForm = () => {
     </header>
 
     <section id="home" class="section hero">
-      <img src="/images/hero-placeholder.jpg" alt="Lush landscape" class="hero-img" />
+      <img src="/images/hero-placeholder.png" alt="Lush landscape" class="hero-img" />
       <div class="hero-text">
         <h1>Welcome to Our Company</h1>
         <p>Your satisfaction is our priority.</p>
@@ -87,10 +87,19 @@ const submitForm = () => {
 
     <section id="about" class="section about">
       <div class="about-content">
-        <img src="/images/about-placeholder.jpg" alt="About us" class="about-img" />
+        <img src="/images/about-placeholder.png" alt="About us" class="about-img" />
         <div>
           <h2>About Us</h2>
-          <p>We provide landscaping services for residential and commercial clients.</p>
+          <p>
+            Our landscaping company was founded with a single goal in mind: to provide exceptional
+            outdoor services to our community. Over the years we have grown into a team of
+            professionals who take pride in every project, big or small.
+          </p>
+          <p>
+            While this page is a placeholder, it highlights our commitment to craftsmanship,
+            reliability, and customer satisfaction. We work closely with clients to understand their
+            needs and deliver results that enhance their outdoor living spaces.
+          </p>
         </div>
       </div>
     </section>
@@ -155,7 +164,7 @@ const submitForm = () => {
 }
 
 .section {
-  padding: 100px 1rem 60px; /* offset for fixed header */
+  padding: 8vh 5vw;
   min-height: 100vh;
 }
 
@@ -211,7 +220,7 @@ const submitForm = () => {
 
 .service {
   text-align: center;
-  width: 200px;
+  width: min(400px, 30vw);
 }
 
 .service img {
@@ -224,7 +233,7 @@ const submitForm = () => {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 400px;
+  max-width: 30vw;
 }
 
 .contact-form input,
