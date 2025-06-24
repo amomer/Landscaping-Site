@@ -1,39 +1,37 @@
-# landscaping-site
+# Landscaping Co
 
-This template should help get you started developing with Vue 3 in Vite.
+This repository contains the code for a simple marketing website for a fictitious landscaping company. It is built with [Vue 3](https://vuejs.org/) and [Vite](https://vitejs.dev/).
+The site includes a homepage with sections for services and contact information as well as a basic "About" page. Routes are defined in `src/router` and the main views live in `src/views`.
 
-## Recommended IDE Setup
+## Getting Started
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Development Server
+
+Start a hot-reloading dev server:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Production Build
+
+Type-check and build for production:
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint and Format
+
+Keep the codebase clean with ESLint, Oxlint and Prettier:
 
 ```sh
 npm run lint
+npm run format
 ```
