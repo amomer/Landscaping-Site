@@ -100,6 +100,12 @@ const submitForm = () => {
             reliability, and customer satisfaction. We work closely with clients to understand their
             needs and deliver results that enhance their outdoor living spaces.
           </p>
+          <h3>Contact Information</h3>
+          <ul class="company-info">
+            <li>Phone: (123) 456-7890</li>
+            <li>Email: info@landscapingco.com</li>
+            <li>Address: 123 Greenway Blvd, Hometown, USA</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -165,7 +171,7 @@ const submitForm = () => {
 
 .section {
   padding: 8vh 5vw;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .hero {
@@ -177,6 +183,7 @@ const submitForm = () => {
 .hero-img {
   width: 100%;
   height: auto;
+  max-height: 100vh;
   display: block;
 }
 
@@ -185,7 +192,8 @@ const submitForm = () => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.692);
+  background-blend-mode: multiply;
   padding: 1rem 2rem;
   border-radius: 4px;
   color: var(--color-heading);
