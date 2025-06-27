@@ -42,51 +42,53 @@ const submitForm = () => {
   window.location.href = mailto
 }
 </script>
+
 <template>
   <div class="home">
     <header class="site-header">
-      <nav>
+      <nav class="container">
         <a
           :class="{ active: activeSection === 'home' }"
           href="#home"
           @click="setActiveSection('home')"
+          >Home</a
         >
-          Home
-        </a>
         <a
           :class="{ active: activeSection === 'about' }"
           href="#about"
           @click="setActiveSection('about')"
+          >About</a
         >
-          About
-        </a>
         <a
           :class="{ active: activeSection === 'services' }"
           href="#services"
           @click="setActiveSection('services')"
+          >Services</a
         >
-          Services
-        </a>
         <a
           :class="{ active: activeSection === 'contact' }"
           href="#contact"
           @click="setActiveSection('contact')"
+          >Contact</a
         >
-          Contact
-        </a>
       </nav>
     </header>
 
+    <!-- HERO ------------------------------------------------------------ -->
     <section id="home" class="section hero">
-      <img src="/images/hero-placeholder.png" alt="Lush landscape" class="hero-img" />
+      <picture>
+        <source srcset="/images/hero-placeholder.png" media="(min-width: 48rem)" />
+        <img src="/images/hero-placeholder.png" alt="Lush landscape" class="hero-img" />
+      </picture>
       <div class="hero-text">
         <h1>Welcome to Our Company</h1>
         <p>Your satisfaction is our priority.</p>
       </div>
     </section>
 
+    <!-- ABOUT ----------------------------------------------------------- -->
     <section id="about" class="section about">
-      <div class="about-content">
+      <div class="about-content container">
         <img src="/images/about-placeholder.png" alt="About us" class="about-img" />
         <div>
           <h2>About Us</h2>
@@ -110,70 +112,98 @@ const submitForm = () => {
       </div>
     </section>
 
+    <!-- SERVICES -------------------------------------------------------- -->
     <section id="services" class="section services">
-      <h2>Services</h2>
-      <div class="services-grid">
-        <div class="service">
-          <img src="/images/service1-placeholder.jpg" alt="Lawn Care" />
-          <p>Lawn Care</p>
-        </div>
-        <div class="service">
-          <img src="/images/service2-placeholder.jpg" alt="Garden Design" />
-          <p>Garden Design</p>
-        </div>
-        <div class="service">
-          <img src="/images/service3-placeholder.jpg" alt="Tree Maintenance" />
-          <p>Tree Maintenance</p>
+      <div class="container">
+        <h2>Services</h2>
+        <div class="services-grid">
+          <div class="service">
+            <img src="/images/service1-placeholder.jpg" alt="Lawn Care" />
+            <p>Lawn Care</p>
+          </div>
+          <div class="service">
+            <img src="/images/service2-placeholder.jpg" alt="Garden Design" />
+            <p>Garden Design</p>
+          </div>
+          <div class="service">
+            <img src="/images/service3-placeholder.jpg" alt="Tree Maintenance" />
+            <p>Tree Maintenance</p>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- CONTACT --------------------------------------------------------- -->
     <section id="contact" class="section contact">
-      <h2>Contact Us</h2>
-      <form @submit.prevent="submitForm" class="contact-form">
-        <div>
-          <label for="name">Name</label>
-          <input id="name" v-model="form.name" required />
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input id="email" v-model="form.email" type="email" required />
-        </div>
-        <div>
-          <label for="message">Message</label>
-          <textarea id="message" v-model="form.message" required></textarea>
-        </div>
-        <button type="submit">Send</button>
-      </form>
+      <div class="container contact-inner">
+        <h2>Contact Us</h2>
+        <form @submit.prevent="submitForm" class="contact-form">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" v-model="form.name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" v-model="form.email" type="email" required />
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" v-model="form.message" required></textarea>
+          </div>
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </section>
   </div>
 </template>
 
 <style scoped>
+@import '/src/assets/base.css';
+
+/* Utility container, wider on desktop ---------------------------------- */
+.container {
+  max-width: 90rem; /* ≈1440px */
+  margin-inline: auto;
+  padding-inline: var(--space-m);
+}
+
+/* HEADER --------------------------------------------------------------- */
 .site-header {
   background: var(--color-background-soft);
-  padding: 1rem;
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
   z-index: 10;
+  padding-block: var(--space-s);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.site-header nav {
+  display: flex;
+  gap: var(--space-m);
+  justify-content: center;
 }
 
 .site-header nav a {
-  margin-right: 1rem;
+  text-decoration: none;
   color: var(--color-heading);
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-s);
+  border-radius: 4px;
+  transition: background 0.2s;
 }
 
+.site-header nav a:hover,
 .site-header nav a.active {
-  font-weight: bold;
-  text-decoration: underline;
+  background: var(--vt-c-indigo);
+  color: #fff;
 }
 
+/* SECTION WRAPPER ------------------------------------------------------ */
 .section {
-  padding: 8vh 5vw;
-  min-height: 80vh;
+  padding-block: calc(var(--space-l) * 1.25); /* slightly taller */
 }
 
+/* HERO ---------------------------------------------------------------- */
 .hero {
   position: relative;
   padding: 0;
@@ -182,71 +212,98 @@ const submitForm = () => {
 
 .hero-img {
   width: 100%;
-  height: auto;
-  max-height: 100vh;
+  height: 55vh; /* a bit taller */
+  object-fit: cover;
   display: block;
 }
 
 .hero-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.692);
-  background-blend-mode: multiply;
-  padding: 1rem 2rem;
-  border-radius: 4px;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: var(--space-s);
+  text-align: center;
+  backdrop-filter: blur(2px); /* less blur */
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 8px;
   color: var(--color-heading);
 }
 
+/* ABOUT ---------------------------------------------------------------- */
 .about-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  display: grid;
+  gap: var(--space-m);
 }
 
-.about-img {
-  max-width: 600px;
-  width: 100%;
-  border-radius: 8px;
-}
-
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .about-content {
-    flex-direction: row;
-    text-align: left;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
   }
 }
 
+.about-img {
+  width: 100%;
+  border-radius: 8px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* SERVICES ------------------------------------------------------------- */
 .services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+  display: grid;
+  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
 }
 
 .service {
   text-align: center;
-  width: min(400px, 30vw);
+  display: grid;
+  gap: var(--space-xs);
 }
 
 .service img {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: 8px;
-  height: auto;
+}
+
+/* CONTACT -------------------------------------------------------------- */
+.contact-inner {
+  display: grid;
+  justify-content: center;
 }
 
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 30vw;
+  display: grid;
+  gap: var(--space-s);
+  width: min(100%, 35rem);
+  padding: var(--space-m);
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 0.5rem;
+  padding: var(--space-s);
+  font: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.contact-form button {
+  justify-self: start;
+  padding: var(--space-s) var(--space-m);
+  background: var(--vt-c-indigo);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.contact-form button:hover {
+  filter: brightness(1.15);
 }
 </style>
