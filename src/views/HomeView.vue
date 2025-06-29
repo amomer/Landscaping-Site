@@ -74,7 +74,7 @@ const submitForm = () => {
       </nav>
     </header>
 
-    <!-- HERO ------------------------------------------------------------ -->
+    <!-- HERO -->
     <section id="home" class="section hero">
       <picture>
         <source srcset="/images/hero-placeholder.png" media="(min-width: 48rem)" />
@@ -86,7 +86,7 @@ const submitForm = () => {
       </div>
     </section>
 
-    <!-- ABOUT ----------------------------------------------------------- -->
+    <!-- ABOUT -->
     <section id="about" class="section about">
       <div class="about-content container">
         <img src="/images/about-placeholder.png" alt="About us" class="about-img" />
@@ -112,7 +112,7 @@ const submitForm = () => {
       </div>
     </section>
 
-    <!-- SERVICES -------------------------------------------------------- -->
+    <!-- SERVICES --->
     <section id="services" class="section services">
       <div class="container">
         <h2>Services</h2>
@@ -133,7 +133,7 @@ const submitForm = () => {
       </div>
     </section>
 
-    <!-- CONTACT --------------------------------------------------------- -->
+    <!-- CONTACT -->
     <section id="contact" class="section contact">
       <div class="container contact-inner">
         <h2>Contact Us</h2>
@@ -160,14 +160,14 @@ const submitForm = () => {
 <style scoped>
 @import '/src/assets/base.css';
 
-/* Utility container, wider on desktop ---------------------------------- */
+/* Utility container, wider on desktop */
 .container {
-  max-width: 90rem; /* ≈1440px */
+  max-width: 90rem;
   margin-inline: auto;
   padding-inline: var(--space-m);
 }
 
-/* HEADER --------------------------------------------------------------- */
+/* HEADER */
 .site-header {
   background: var(--color-background-soft);
   position: sticky;
@@ -198,12 +198,12 @@ const submitForm = () => {
   color: #fff;
 }
 
-/* SECTION WRAPPER ------------------------------------------------------ */
+/* SECTION WRAPPER */
 .section {
-  padding-block: calc(var(--space-l) * 1.25); /* slightly taller */
+  padding-block: calc(var(--space-l) * 1.25);
 }
 
-/* HERO ---------------------------------------------------------------- */
+/* HERO */
 .hero {
   position: relative;
   padding: 0;
@@ -212,7 +212,7 @@ const submitForm = () => {
 
 .hero-img {
   width: 100%;
-  height: 55vh; /* a bit taller */
+  height: 55vh;
   object-fit: cover;
   display: block;
 }
@@ -224,13 +224,13 @@ const submitForm = () => {
   place-content: center;
   gap: var(--space-s);
   text-align: center;
-  backdrop-filter: blur(2px); /* less blur */
+  backdrop-filter: blur(2px);
   background: rgba(255, 255, 255, 0.45);
   border-radius: 8px;
   color: var(--color-heading);
 }
 
-/* ABOUT ---------------------------------------------------------------- */
+/* ABOUT */
 .about-content {
   display: grid;
   gap: var(--space-m);
@@ -250,7 +250,7 @@ const submitForm = () => {
   object-fit: cover;
 }
 
-/* SERVICES ------------------------------------------------------------- */
+/* SERVICES */
 .services-grid {
   display: grid;
   gap: var(--space-m);
@@ -270,7 +270,7 @@ const submitForm = () => {
   border-radius: 8px;
 }
 
-/* CONTACT -------------------------------------------------------------- */
+/* CONTACT */
 .contact-inner {
   display: grid;
   justify-content: center;
