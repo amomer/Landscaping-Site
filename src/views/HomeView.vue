@@ -114,4 +114,17 @@ onUnmounted(() => {
   background: var(--vt-c-indigo);
   color: #fff;
 }
+
+/* SECTION WRAPPER */
+.section {
+  padding-block: var(--space-l);
+  margin-bottom: var(--space-m);
+}
+
+@media (min-width: 48rem) {
+  .section {
+    padding-block: calc(var(--space-l) * 1.15);
+    margin-bottom: calc(var(--space-m) * 1.2);
+  }
+}
 </style>
