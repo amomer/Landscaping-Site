@@ -81,7 +81,7 @@ onUnmounted(() => {
 .container {
   max-width: 90rem;
   margin-inline: auto;
-  padding-inline: var(--space-m);
+  padding-inline: var(--space-xs);
 }
 
 /* HEADER */
@@ -106,7 +106,7 @@ onUnmounted(() => {
   font-weight: 500;
   padding: var(--space-xs) var(--space-s);
   border-radius: 4px;
-  transition: background 0.2s;
+  transition: background 0.5s;
 }
 
 .site-header nav a:hover,

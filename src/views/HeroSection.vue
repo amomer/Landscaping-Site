@@ -5,22 +5,34 @@
       <img src="/images/hero-placeholder.png" alt="Lush landscape" class="hero-img" />
     </picture>
     <div class="hero-text">
-      <h1>Welcome to Our Company</h1>
-      <p>Your satisfaction is our priority.</p>
+      <h1>GSD Landscaping</h1>
+      <p>We get stuff done!</p>
     </div>
   </section>
 </template>
 
 <style scoped>
+:root {
+  --header-height: 4.5rem;
+  --section-padding: 3rem;
+  --section-margin: 2rem;
+}
 .hero {
   position: relative;
   padding: 0;
   text-align: center;
+  min-height: calc(
+    100vh - var(--header-height, 4.5rem) - 2 * var(--section-padding, 3rem) -
+      var(--section-margin, 2rem)
+  );
 }
 
 .hero-img {
   width: 100%;
-  height: 55vh;
+  height: calc(
+    100vh - var(--header-height, 4.5rem) - 2 * var(--section-padding, 3rem) -
+      var(--section-margin, 2rem)
+  );
   object-fit: cover;
   display: block;
 }
@@ -32,7 +44,7 @@
   place-content: center;
   gap: var(--space-s);
   text-align: center;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
   background: rgba(255, 255, 255, 0.45);
   border-radius: 8px;
   color: var(--color-heading);
