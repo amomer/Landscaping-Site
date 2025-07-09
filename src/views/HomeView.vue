@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+// @ts-expect-error: No TypeScript types available for 'pageable' package
 import Pageable from 'pageable'
 
 import HeroSection from './HeroSection.vue'
