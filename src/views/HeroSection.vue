@@ -5,7 +5,7 @@
       <img src="/images/hero-placeholder.png" alt="Lush landscape" class="hero-img" />
     </picture>
     <div class="hero-text">
-      <h1>GSD Landscaping</h1>
+      <h1>GSD Property Enchancement</h1>
       <p>We get stuff done!</p>
     </div>
   </section>
@@ -22,17 +22,14 @@
   padding: 0;
   text-align: center;
   min-height: calc(
-    100vh - var(--header-height, 4.5rem) - 2 * var(--section-padding, 3rem) -
+    100dvh - var(--header-height, 4.5rem) - 2 * var(--section-padding, 3rem) -
       var(--section-margin, 2rem)
   );
 }
 
 .hero-img {
   width: 100%;
-  height: calc(
-    100vh - var(--header-height, 4.5rem) - 2 * var(--section-padding, 3rem) -
-      var(--section-margin, 2rem)
-  );
+  height: calc(100dvh - var(--header-height, 4.5rem));
   object-fit: cover;
   display: block;
 }

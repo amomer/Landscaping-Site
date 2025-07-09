@@ -82,6 +82,9 @@ onUnmounted(() => {
   max-width: 90rem;
   margin-inline: auto;
   padding-inline: var(--space-xs);
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 /* HEADER */
@@ -117,13 +120,18 @@ onUnmounted(() => {
 
 /* SECTION WRAPPER */
 .section {
-  padding-block: var(--space-l);
+  min-height: calc(var(--app-height) - var(--header-height));
+  padding-block: var(--space-m);
   margin-bottom: var(--space-m);
+  scroll-snap-align: start;
+  overscroll-behavior: contain;
+  position: relative;
+  scroll-snap-stop: always;
 }
 
 @media (min-width: 48rem) {
   .section {
-    padding-block: calc(var(--space-l) * 1.15);
+    padding-block: calc(var(--space-m) * 1.15);
     margin-bottom: calc(var(--space-m) * 1.2);
   }
 }
