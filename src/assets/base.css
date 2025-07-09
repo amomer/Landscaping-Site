@@ -19,6 +19,8 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --header-height: 4.5rem;
 }
 
 /* semantic color variables for this project */
@@ -67,8 +69,15 @@
   --max-content-width: 1280px;
 }
 
+html,
+body {
+  scroll-padding-top: var(--header-height, 4.5rem);
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 /* Type helpers */
@@ -95,7 +104,7 @@ h4 {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: inherit;
   margin: 0;
   font-weight: normal;
 }

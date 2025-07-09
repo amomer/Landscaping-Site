@@ -32,7 +32,7 @@ onUnmounted(() => pager?.destroy())
 
 <template>
   <div class="home">
-    <!-- sticky nav -->
+    <!-- sticky nav (move outside of #page-container) -->
     <header class="site-header">
       <nav class="container">
         <a :class="{ active: activeSection === 'home' }" href="#home" @click.prevent="go('home')"
@@ -56,7 +56,7 @@ onUnmounted(() => pager?.destroy())
       </nav>
     </header>
 
-    <!-- Pageable container -->
+    <!-- Pageable container (header is now outside) -->
     <div id="page-container">
       <section data-anchor="home"><HeroSection /></section>
       <section data-anchor="about"><AboutSection /></section>
@@ -69,20 +69,10 @@ onUnmounted(() => pager?.destroy())
 <style scoped>
 @import '/src/assets/base.css';
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  overflow: hidden;
-}
 .home {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  /* Remove overflow-x: hidden unless you see horizontal scroll */
 }
-
 .container {
-  max-width: 90rem;
   margin: 0 auto;
   padding-inline: var(--space-xs);
 }
@@ -114,13 +104,12 @@ body {
 }
 
 #page-container {
-  height: 100%;
+  scroll-padding-top: var(--header-height, 4.5rem);
 }
 #page-container section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-m);
+  display: block;
+  box-sizing: border-box;
+  height: 100dvh;
+  /* Remove min-height, width, and overflow-x */
 }
 </style>
