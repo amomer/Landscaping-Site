@@ -1,138 +1,125 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import Pageable from 'pageable'
+
 import HeroSection from './HeroSection.vue'
 import AboutSection from './AboutSection.vue'
 import ServicesSection from './ServicesSection.vue'
 import ContactSection from './ContactSection.vue'
 
-import { ref, onMounted, onUnmounted } from 'vue'
-
 const activeSection = ref('home')
+let pager: Pageable | undefined
 
-function setActiveSection(section: string) {
+function go(section: string) {
+  pager?.scrollToAnchor(section) // smooth jump via Pageable
   activeSection.value = section
 }
 
-let observer: IntersectionObserver
-
 onMounted(() => {
-  const sections = document.querySelectorAll<HTMLElement>('.section')
-
-  observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          activeSection.value = (entry.target as HTMLElement).id
-        }
-      }
+  pager = new Pageable('#page-container', {
+    anchors: ['home', 'about', 'services', 'contact'],
+    animation: 600,
+    pips: false,
+    onFinish: (data: { index: string | number }) => {
+      activeSection.value = pager?.pages[data.index].dataset.anchor ?? 'home'
     },
-    { threshold: 0.6 },
-  )
-
-  sections.forEach((section) => observer.observe(section))
+  })
 })
 
-onUnmounted(() => {
-  observer?.disconnect()
-})
+onUnmounted(() => pager?.destroy())
 </script>
 
 <template>
   <div class="home">
+    <!-- sticky nav -->
     <header class="site-header">
       <nav class="container">
-        <a
-          :class="{ active: activeSection === 'home' }"
-          href="#home"
-          @click="setActiveSection('home')"
+        <a :class="{ active: activeSection === 'home' }" href="#home" @click.prevent="go('home')"
           >Home</a
         >
-        <a
-          :class="{ active: activeSection === 'about' }"
-          href="#about"
-          @click="setActiveSection('about')"
+        <a :class="{ active: activeSection === 'about' }" href="#about" @click.prevent="go('about')"
           >About</a
         >
         <a
           :class="{ active: activeSection === 'services' }"
           href="#services"
-          @click="setActiveSection('services')"
+          @click.prevent="go('services')"
           >Services</a
         >
         <a
           :class="{ active: activeSection === 'contact' }"
           href="#contact"
-          @click="setActiveSection('contact')"
+          @click.prevent="go('contact')"
           >Contact</a
         >
       </nav>
     </header>
 
-    <HeroSection />
-    <AboutSection />
-    <ServicesSection />
-    <ContactSection />
+    <!-- Pageable container -->
+    <div id="page-container">
+      <section data-anchor="home"><HeroSection /></section>
+      <section data-anchor="about"><AboutSection /></section>
+      <section data-anchor="services"><ServicesSection /></section>
+      <section data-anchor="contact"><ContactSection /></section>
+    </div>
   </div>
 </template>
 
 <style scoped>
 @import '/src/assets/base.css';
 
-/* Utility container, wider on desktop */
-.container {
-  max-width: 90rem;
-  margin-inline: auto;
-  padding-inline: var(--space-xs);
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+.home {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* HEADER */
+.container {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding-inline: var(--space-xs);
+}
 .site-header {
   background: var(--color-background-soft);
   position: sticky;
   top: 0;
   z-index: 10;
   padding-block: var(--space-s);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.08);
 }
-
 .site-header nav {
   display: flex;
   gap: var(--space-m);
   justify-content: center;
 }
-
 .site-header nav a {
-  text-decoration: none;
   color: var(--color-heading);
   font-weight: 500;
   padding: var(--space-xs) var(--space-s);
   border-radius: 4px;
-  transition: background 0.5s;
+  text-decoration: none;
+  transition: background 0.3s;
 }
-
 .site-header nav a:hover,
 .site-header nav a.active {
   background: var(--vt-c-indigo);
   color: #fff;
 }
 
-/* SECTION WRAPPER */
-.section {
-  min-height: calc(var(--app-height) - var(--header-height));
-  padding-block: var(--space-m);
-  margin-bottom: var(--space-m);
-  scroll-snap-align: start;
-  overscroll-behavior: contain;
-  position: relative;
-  scroll-snap-stop: always;
+#page-container {
+  height: 100%;
 }
-
-@media (min-width: 48rem) {
-  .section {
-    padding-block: calc(var(--space-m) * 1.15);
-    margin-bottom: calc(var(--space-m) * 1.2);
-  }
+#page-container section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-m);
 }
 </style>
